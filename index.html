@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>울산 상생회 — 환경 인허가 영업 네트워크</title>
+<meta name="description" content="울산 지역의 영업 네트워크를 함께 만드는 협력 공동체, 울산 상생회입니다." />
+
+<!-- Pretendard (body) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" as="style" crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<!-- Noto Serif KR (display) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:   #F5F1EA;
+    --paper-2: #ECE6DA;
+    --ink:     #1A2421;
+    --petrol:  #1F4D4A;
+    --petrol-2:#2E6A66;
+    --sand:    #C89B5C;
+    --moss:    #7A8F73;
+    --rule:    #D8D1C2;
+    --mute:    #6B6E68;
+    --maxw:    1100px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    line-height: 1.65;
+    font-size: 17px;
+    letter-spacing: -0.005em;
+  }
+  .serif { font-family: "Noto Serif KR", serif; font-weight: 700; letter-spacing: -0.02em; }
+  .wrap  { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+  /* ===== Nav ===== */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(245,241,234,0.85);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s, background .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--rule); }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+  .brand-mark {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--petrol);
+    position: relative; flex: none;
+  }
+  .brand-mark::after {
+    content: ""; position: absolute; inset: 6px;
+    border-radius: 50%; border: 2px solid var(--sand);
+  }
+  .brand-name { font-family: "Noto Serif KR", serif; font-weight: 700; font-size: 18px; letter-spacing: 0; }
+  .menu { display: flex; gap: 28px; }
+  .menu a {
+    color: var(--ink); text-decoration: none; font-size: 14.5px;
+    opacity: 0.75; transition: opacity .2s;
+  }
+  .menu a:hover { opacity: 1; }
+  @media (max-width: 640px) { .menu { display: none; } }
+
+  /* ===== Hero ===== */
+  .hero {
+    padding: 110px 0 90px;
+    position: relative; overflow: hidden;
+  }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--petrol); font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--petrol);
+  }
+  .hero h1 {
+    font-family: "Noto Serif KR", serif;
+    font-weight: 900;
+    font-size: clamp(40px, 6.4vw, 76px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+    margin: 0 0 28px;
+  }
+  .hero h1 em {
+    font-style: normal; color: var(--petrol);
+    background: linear-gradient(transparent 62%, rgba(200,155,92,0.35) 62%);
+    padding: 0 4px;
+  }
+  .hero-lede {
+    max-width: 640px; font-size: 18.5px; color: var(--mute);
+    margin: 0 0 40px;
+  }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px; border-radius: 999px;
+    font-size: 14.5px; font-weight: 600; text-decoration: none;
+    transition: transform .15s ease, box-shadow .15s ease, background .2s;
+  }
+  .btn-primary { background: var(--petrol); color: var(--paper); }
+  .btn-primary:hover { background: #173a37; }
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn svg { width: 14px; height: 14px; }
+
+  /* hero meta strip */
+  .hero-meta {
+    margin-top: 70px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-meta > div {
+    padding: 22px 0; border-right: 1px solid var(--rule);
+    padding-right: 24px;
+  }
+  .hero-meta > div:last-child { border-right: none; }
+  .hero-meta dt {
+    font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mute); margin: 0 0 8px; font-weight: 600;
+  }
+  .hero-meta dd {
+    margin: 0; font-family: "Noto Serif KR", serif; font-weight: 700;
+    font-size: 19px; color: var(--ink);
+  }
+  @media (max-width: 720px) {
+    .hero { padding: 80px 0 60px; }
+    .hero-meta { grid-template-columns: 1fr; }
+    .hero-meta > div { border-right: none; border-bottom: 1px solid var(--rule); padding: 16px 0; }
+    .hero-meta > div:last-child { border-bottom: none; }
+  }
+
+  /* ===== Section base ===== */
+  section { padding: 96px 0; }
+  .section-eyebrow {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--petrol); font-weight: 700; margin-bottom: 18px;
+  }
+  .section-title {
+    font-family: "Noto Serif KR", serif; font-weight: 700;
+    font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.025em;
+    margin: 0 0 22px; line-height: 1.2;
+  }
+  .section-lede { color: var(--mute); max-width: 640px; font-size: 17px; }
+
+  /* ===== About ===== */
+  .about { background: var(--paper-2); }
+  .about-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start;
+  }
+  .about-points { list-style: none; padding: 0; margin: 28px 0 0; }
+  .about-points li {
+    display: grid; grid-template-columns: 38px 1fr; gap: 18px;
+    padding: 18px 0; border-top: 1px solid var(--rule);
+  }
+  .about-points li:last-child { border-bottom: 1px solid var(--rule); }
+  .about-points .num {
+    font-family: "Noto Serif KR", serif; font-weight: 700;
+    color: var(--sand); font-size: 18px; line-height: 1.8;
+  }
+  .about-points h4 { margin: 0 0 4px; font-size: 16.5px; font-weight: 600; }
+  .about-points p  { margin: 0; color: var(--mute); font-size: 15px; }
+  @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+  /* ===== Journey (signature) ===== */
+  .journey { background: var(--ink); color: var(--paper); position: relative; }
+  .journey .section-eyebrow { color: var(--sand); }
+  .journey .section-title { color: var(--paper); }
+  .journey .section-lede { color: #B7B6AF; }
+
+  .timeline {
+    margin-top: 64px; position: relative;
+    padding-left: 22px;
+  }
+  .timeline::before {
+    content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px;
+    width: 1px; background: linear-gradient(var(--sand), transparent);
+  }
+  .step {
+    position: relative; padding: 0 0 56px 44px;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .step.in { opacity: 1; transform: none; }
+  .step:last-child { padding-bottom: 0; }
+  .step::before {
+    content: ""; position: absolute; left: -22px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--paper); border: 3px solid var(--sand);
+    box-shadow: 0 0 0 6px rgba(245,241,234,0.06);
+  }
+  .step .step-num {
+    font-family: "Noto Serif KR", serif; font-weight: 700;
+    font-size: 12px; letter-spacing: 0.2em; color: var(--sand);
+    margin-bottom: 6px; display: block;
+  }
+  .step h3 {
+    font-family: "Noto Serif KR", serif; font-weight: 700;
+    font-size: clamp(22px, 2.6vw, 28px); margin: 0 0 10px;
+    letter-spacing: -0.02em; color: var(--paper);
+  }
+  .step p {
+    color: #C7C6BE; margin: 0; max-width: 620px; font-size: 16px; line-height: 1.7;
+  }
+  .step .tag {
+    display: inline-block; margin-top: 14px; padding: 5px 12px;
+    border: 1px solid rgba(200,155,92,0.4); border-radius: 999px;
+    font-size: 12px; color: var(--sand); letter-spacing: 0.05em;
+  }
+
+  /* ===== Members / who joins ===== */
+  .who-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 44px;
+  }
+  .who-card {
+    padding: 28px 24px 26px; border: 1px solid var(--rule); border-radius: 14px;
+    background: #FBF8F1; transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .who-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px -18px rgba(26,36,33,0.35); }
+  .who-card .ico {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: var(--petrol); color: var(--paper);
+    display: grid; place-items: center; margin-bottom: 18px;
+  }
+  .who-card .ico svg { width: 18px; height: 18px; }
+  .who-card h4 { margin: 0 0 8px; font-size: 17px; font-weight: 700; }
+  .who-card p  { margin: 0; color: var(--mute); font-size: 14.5px; }
+  @media (max-width: 820px) { .who-grid { grid-template-columns: 1fr; } }
+
+  /* ===== Contact ===== */
+  .contact { background: var(--petrol); color: var(--paper); }
+  .contact .section-eyebrow { color: var(--sand); }
+  .contact .section-title { color: var(--paper); }
+  .contact-grid {
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; margin-top: 44px;
+  }
+  .contact p { color: #D6DEDD; }
+  .contact-info { display: grid; gap: 18px; }
+  .contact-info dt {
+    font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sand); margin-bottom: 4px; font-weight: 700;
+  }
+  .contact-info dd { margin: 0; font-size: 17px; }
+  .contact-info a { color: var(--paper); text-decoration: none; border-bottom: 1px solid rgba(245,241,234,0.4); }
+  .contact-info a:hover { border-bottom-color: var(--sand); }
+  @media (max-width: 820px) { .contact-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* ===== Footer ===== */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 32px 0; font-size: 13.5px; color: var(--mute);
+  }
+  .foot-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .step { opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">울산 상생회</span>
+    </a>
+    <nav class="menu" aria-label="주요 메뉴">
+      <a href="#about">소개</a>
+      <a href="#journey">사업 흐름</a>
+      <a href="#who">함께하는 분들</a>
+      <a href="#contact">문의</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Ulsan Sangsaenghoe · Since 2025</div>
+    <h1>
+      울산의 인맥이<br/>
+      <em>새로운 사업이</em> 되는 자리.
+    </h1>
+    <p class="hero-lede">
+      울산 상생회는 지역 기업과 전문가가 모여 영업 네트워크를 함께 만드는 협력 공동체입니다.
+      신뢰 기반의 소개와 협업으로, 회원사가 울산에서 새로운 사업 기회를 안정적으로 발굴할 수 있도록 돕습니다.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#journey">사업 흐름 보기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#contact">문의하기</a>
+    </div>
+
+    <dl class="hero-meta">
+      <div>
+        <dt>활동 지역</dt>
+        <dd>울산광역시</dd>
+      </div>
+      <div>
+        <dt>전문 분야</dt>
+        <dd>환경 인허가 · 지역 영업</dd>
+      </div>
+      <div>
+        <dt>운영 방식</dt>
+        <dd>회원사 협력 네트워크</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-eyebrow">About</div>
+      <h2 class="section-title">현지의 인맥이<br/>가장 큰 자산이 되는 곳.</h2>
+      <p class="section-lede">
+        울산에서의 영업은 결국 사람과 사람의 연결에서 시작됩니다.
+        울산 상생회는 회원사들의 신뢰 관계 위에서 정보를 나누고,
+        함께 기회를 만들어 갈 수 있는 협력의 장을 운영합니다.
+      </p>
+    </div>
+    <ul class="about-points">
+      <li>
+        <span class="num">01</span>
+        <div>
+          <h4>지역 기반 협력 네트워크</h4>
+          <p>울산을 가장 잘 아는 사람들이 모여 실질적인 연결을 만듭니다.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">02</span>
+        <div>
+          <h4>신뢰 중심의 소개 문화</h4>
+          <p>이름을 걸고 소개할 수 있는 관계 위에서 협력이 이루어집니다.</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">03</span>
+        <div>
+          <h4>환경 인허가 전문성</h4>
+          <p>까다로운 환경 인허가 업무를 전문 회원사가 직접 책임집니다.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section class="journey" id="journey">
+  <div class="wrap">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-title">한 번의 소개에서<br/>한 건의 수주로.</h2>
+    <p class="section-lede">
+      울산 상생회의 협력은 정해진 흐름을 따라 움직입니다.
+      각 단계마다 누가 무엇을 책임지는지 분명하게 두어, 신뢰가 깨지지 않도록 합니다.
+    </p>
+
+    <ol class="timeline" aria-label="사업 협력 흐름">
+      <li class="step">
+        <span class="step-num">Step 01</span>
+        <h3>환경 인허가 전문 회원사</h3>
+        <p>서울에 본사를 둔 환경 인허가 전문 회원사가 울산 시장에 진입하고자 합니다. 기술력은 충분하지만 현지 영업 인맥이 부족한 상황입니다.</p>
+        <span class="tag">출발점</span>
+      </li>
+      <li class="step">
+        <span class="step-num">Step 02</span>
+        <h3>울산 상생회</h3>
+        <p>회원사와 지역 멤버를 연결하는 영업 네트워크 플랫폼입니다. 협력 규칙과 운영, 분쟁 조정까지 상생회가 책임집니다.</p>
+        <span class="tag">플랫폼</span>
+      </li>
+      <li class="step">
+        <span class="step-num">Step 03</span>
+        <h3>상생회 멤버 — 현지 인맥</h3>
+        <p>울산 현지의 관계를 바탕으로 지인을 소개하고 미팅 자리를 마련합니다. 멤버는 ‘연결’까지를 책임지며, 기술적 영업은 회원사가 이어받습니다.</p>
+        <span class="tag">연결</span>
+      </li>
+      <li class="step">
+        <span class="step-num">Step 04</span>
+        <h3>발주처 · 고객사</h3>
+        <p>현지 신뢰 관계 위에서 입찰·계약 기회가 열립니다. 닫혀 있던 정보의 문이 자연스럽게 열립니다.</p>
+        <span class="tag">기회</span>
+      </li>
+      <li class="step">
+        <span class="step-num">Step 05</span>
+        <h3>회원사가 직접 기술 설명</h3>
+        <p>회원사가 환경 인허가 전문성을 바탕으로 직접 기술과 솔루션을 설명하고, 사업을 수주합니다.</p>
+        <span class="tag">수주</span>
+      </li>
+      <li class="step">
+        <span class="step-num">Step 06</span>
+        <h3>매출 발생, 그리고 다음 협력</h3>
+        <p>한 번의 협력은 다음 협력의 토대가 됩니다. 회원사·멤버·고객사 모두가 신뢰를 쌓아가는 선순환이 만들어집니다.</p>
+        <span class="tag">선순환</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="wrap">
+    <div class="section-eyebrow">Members</div>
+    <h2 class="section-title">이런 분들과 함께합니다.</h2>
+    <p class="section-lede">
+      울산 상생회는 지역에서 오래 활동해 온 분들과, 전문 역량을 가진 회원사가 함께하는 자리입니다.
+    </p>
+
+    <div class="who-grid">
+      <article class="who-card">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M17 11a4 4 0 0 1 4 4v2"/>
+            <path d="M17 3a4 4 0 0 1 0 8"/>
+          </svg>
+        </div>
+        <h4>현지 비즈니스 네트워커</h4>
+        <p>울산을 기반으로 다양한 업종의 의사결정권자들과 신뢰 관계를 쌓아 온 분들.</p>
+      </article>
+
+      <article class="who-card">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7h18l-2 12H5L3 7z"/>
+            <path d="M8 7V5a4 4 0 0 1 8 0v2"/>
+          </svg>
+        </div>
+        <h4>환경 인허가 전문 회원사</h4>
+        <p>환경 인허가를 비롯한 전문 기술 분야에서 검증된 실적을 보유한 기업.</p>
+      </article>
+
+      <article class="who-card">
+        <div class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h4>지역 발주처 · 고객사</h4>
+        <p>믿을 수 있는 환경·기술 파트너와의 검증된 연결을 필요로 하는 기업.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="section-eyebrow">Contact</div>
+    <h2 class="section-title">함께 하실 분을 기다립니다.</h2>
+    <p class="section-lede">
+      가입 문의, 협업 제안, 환경 인허가 관련 상담 모두 환영합니다. 편하게 연락 주세요.
+    </p>
+
+    <div class="contact-grid">
+      <p>
+        울산에서의 협력은 한 번의 만남에서 시작됩니다.
+        간단한 소개와 함께 메일을 보내주시면, 담당자가 빠르게 회신드리겠습니다.
+      </p>
+
+      <dl class="contact-info">
+        <div>
+          <dt>이메일</dt>
+          <dd><a href="mailto:contact@ulsan-sangsaenghoe.kr">contact@ulsan-sangsaenghoe.kr</a></dd>
+        </div>
+        <div>
+          <dt>전화</dt>
+          <dd>052-000-0000</dd>
+        </div>
+        <div>
+          <dt>주소</dt>
+          <dd>울산광역시 남구 ○○로 00, 0층</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div>© <span id="year"></span> 울산 상생회. All rights reserved.</div>
+    <div>Ulsan, Republic of Korea</div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // nav border on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  document.addEventListener('scroll', onScroll, { passive: true });
+
+  // timeline reveal
+  const steps = document.querySelectorAll('.step');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -40px 0px' });
+    steps.forEach((s) => io.observe(s));
+  } else {
+    steps.forEach((s) => s.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
